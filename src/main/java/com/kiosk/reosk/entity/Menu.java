@@ -1,25 +1,24 @@
 package com.kiosk.reosk.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Product {
+public class Menu {
 
-    private int pCode;
-    @Id
-    private String pName;
-    private int price;
-
-
+	@Id
+	private	String	mcode;
+	
+	private	String	mname;
+	private	String	mimgurl;
+	
 }

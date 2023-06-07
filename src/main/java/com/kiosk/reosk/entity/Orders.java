@@ -1,35 +1,53 @@
 package com.kiosk.reosk.entity;
 
+import com.kiosk.reosk.dto.OrdersDetailDTO;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Orders implements Serializable {
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Orders  {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orders_seq")
-    @SequenceGenerator(name = "orders_seq", sequenceName = "orders_seq", allocationSize = 1)
-    private int oNum;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long oNum;
 
-    @Id
     @CreatedDate
     @Column(name = "oDate")
     private LocalDateTime oDate;
-    private int stock;
-    private long totalPrice;
 
-    private long oPrice;
-    private String oName;
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
+    private List<OrdersDetail> ordersDetails;
 
     @PrePersist
     public void onPrePersist() {
         this.oDate = LocalDateTime.now();
     }
 
-    @ManyToOne
-    private Product product;
+    public List<OrdersDetail> getOrdersDetailByoNum(Long onum) {
+        List<OrdersDetail> results = new ArrayList<>();
+        for (OrdersDetail ordersDetail : ordersDetails) {
+            if (ordersDetail.getOrders().getONum().equals(onum)) {
+                results.add(ordersDetail);
+            }
+        }
+        return results.isEmpty() ? null : results;
+    }
+
+    public void setOrdersDetails(List<OrdersDetail> ordersDetails) {
+        this.ordersDetails = ordersDetails;
+        for (OrdersDetail detail : ordersDetails) {
+            detail.setOrders(this);
+        }
+    }
 
 }
