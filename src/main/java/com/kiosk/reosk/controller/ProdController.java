@@ -52,6 +52,7 @@ public class ProdController {
 	        session.setAttribute("nickname", find.map(User::getNickname).orElse("")); 
 	        return find;
 	        //djsd
+	        //asfljkas
 	   } 
 	
 }
