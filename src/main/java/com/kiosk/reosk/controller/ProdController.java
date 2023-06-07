@@ -51,6 +51,7 @@ public class ProdController {
 	        Optional<User> find = userService.findUsersByPonNum(ponNum);
 	        session.setAttribute("nickname", find.map(User::getNickname).orElse("")); 
 	        return find;
+	        //djsd
 	   } 
 	
 }
