@@ -17,8 +17,7 @@
                         <label for="ponNum">핸드폰 번호 입력:</label>
                         <input type="tel" class="form-control" id="ponNum" name="ponNum" required placeholder="010-1234-5678">
                     </div>
-
-                    <input onclick="loginService()" class="btn btn-primary btn-block" value="확인">
+					
                 </form>
                 
                 <script type="text/javascript">
@@ -50,6 +49,15 @@
 												
 											</div>`;
 											$('#logs').html(html);
+											$('#button2').html("");
+											var html2 = `
+											
+												<div>
+								                <button onclick="window.location.href='/reosk/payment'" class="btn btn-primary btn-block mt-2">결제하기</button>
+								                <button onclick="#" class="btn btn-primary btn-block mt-2">포인트 적립 내역확인</button>
+								                <button onclick="history.back()" class="btn btn-primary btn-block mt-2">뒤로가기</button>
+												</div>`;
+												$('#button2').html(html2);
 											
 										}else{
 											alert("번호를 잘못 입력하셨습니다 다시 입력해주세요 ")
@@ -67,10 +75,13 @@
                 </script>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <button onclick="window.location.href='/reosk/signup'" class="btn btn-secondary btn-block mt-2">회원가입</button>
-                <button onclick="history.back()" class="btn btn-secondary btn-block mt-2">뒤로가기</button>
+        <div class="row justify-content-center" >
+            <div class="col-6" id="button2">
+            <div>
+
+                <button onclick="loginService()" class="btn btn-primary btn-block mt-2">확인</button>
+                <button onclick="window.location.href='/reosk/signup'" class="btn btn-primary btn-block mt-2">회원가입</button>
+                <button onclick="history.back()" class="btn btn-primary btn-block mt-2">뒤로가기</button>
             </div>
         </div>
     </div>

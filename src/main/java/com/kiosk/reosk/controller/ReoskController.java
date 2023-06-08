@@ -63,42 +63,20 @@ public class ReoskController {
         return "/reosk/orderList";
     }
 
-    @GetMapping("/cha")
-    public String cha(){
-        return "/reosk/index2";
+    @GetMapping("/Bpayment")
+    public String Bpayment(Model model){
+    	model.addAttribute("PonNum","1");
+        return "/reosk/payment";
+    }
+    @GetMapping("/payment")
+    public String payment(Model model){
+    	
+    	return "/reosk/payment";
     }
 
-    @GetMapping("/cof")
-    public String cof() {
-
-        return "/reosk/cof"; // HTML 파일의 이름을 반환합니다. (예: "my-html.html")
-    }
-
-
-    @GetMapping("/load-html")
-    public String loa(@RequestParam("name") String name) {
-        System.out.println("emasdkgddjdaslkjgdasl");
-        return "/reosk/" + name; // HTML 파일의 이름을 반환합니다. (예: "my-html.html")
-    }
-
-    @GetMapping("/load-htl")
-    public String loadHtl(@RequestParam("name") String name, @RequestParam("cartList") String cartList) {
-        System.out.println("emasdkgddjdaslkjgdasl");
-        return "/reosk/" + name; // HTML 파일의 이름을 반환합니다. (예: "my-html.html")
-    }
 
 //    
-//    @Autowired
-//    MenuService menuservice;
-//    
-//    
-//    @GetMapping("/menuList")
-//    
-//    public List<Menu> getMenus(){
-//    	List<Menu> menus = menuservice.getAllMenus(); // 예시: MenuService를 통해 메뉴 데이터 조회
-//    	System.out.println("**********" + menus);
-//        return menus;
-//    }
+
     
     @GetMapping("/menutest")
     public	String	menu() {
@@ -116,6 +94,10 @@ public class ReoskController {
     	session.setAttribute("myKey", value);
         model.addAttribute("sessionValue", value);
         return    "/reosk/index2"; 
+    }
+    @GetMapping("/loding")
+    public String loding() {
+    	return "/reosk/loding";
     }
 
 }
