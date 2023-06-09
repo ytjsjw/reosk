@@ -14,7 +14,7 @@
                     <h2 class="text-center">로그인</h2>
                     
                     <div class="form-group" id="logs">
-                        <label for="ponNum">핸드폰 번호 입력:</label>
+                        <label for="ponNum">핸드폰 번호 입력:               (0000 입력시 관리자 모드 들어감)</label>
                         <input type="tel" class="form-control" id="ponNum" name="ponNum" required placeholder="010-1234-5678">
                     </div>
 					
@@ -22,8 +22,16 @@
                 
                 <script type="text/javascript">
                 	function loginService(){
+                		
                 		var ponNum = $("#ponNum").val();
                 		alert(ponNum);
+                		if(ponNum=="0000"){
+                			alert("들어옴");
+                            setTimeout(function(){
+                                window.location.href = "http://localhost:8080/reosk/admin";
+                            }, 10);  // 3000 milliseconds = 3 seconds
+                            return;
+                        }
                 	    if (!ponNum) {
                 	        alert("핸드폰번호를 입력해주세요");
                 	        return; // 핸드폰번호가 없으면 함수를 종료합니다.
